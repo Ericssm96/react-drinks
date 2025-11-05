@@ -5,10 +5,9 @@ export const HomeLayout = () => {
   return (
     <>
       <Navbar />
-      <Outlet />
-      <footer>
-        <h2>footer</h2>
-      </footer>
+      <section className="page">
+        <Outlet />
+      </section>
     </>
   )
 }
