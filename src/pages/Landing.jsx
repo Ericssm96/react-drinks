@@ -8,14 +8,12 @@ export const loader = async () => {
 
   let searchTerm = "is";
   const response = await axios.get(`${cocktailSearchUrl}${searchTerm}`);
-  console.log(response);
 
   return {drinks: response.data.drinks, searchTerm};
 }
 
 export const Landing = () => {
   const {drinks, searchTerm} = useLoaderData();
-  console.log(drinks);
   return (
     <>
       <CocktailList drinks={drinks} />
