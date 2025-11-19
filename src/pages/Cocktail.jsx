@@ -49,8 +49,8 @@ const Wrapper = styled.div`
 
 const singleCocktailUrl = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
 
-export const loader = async (data) => {
-  const id = data.params.id;
+export const loader = async (pageData) => {
+  const id = pageData.params.id;
   const response = await axios.get(`${singleCocktailUrl}${id}`);
   const data = response.data;
 
