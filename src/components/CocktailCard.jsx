@@ -33,7 +33,7 @@ const Wrapper = styled.article`
 `;
 
 export const CocktailCard = ({id, name, image, info, glass}) => {
-  console.log(image);
+  
   return (
     <Wrapper>
       <div className="img-container">
