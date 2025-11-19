@@ -1,4 +1,4 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -60,7 +60,11 @@ export const loader = async (pageData) => {
 
 export const Cocktail = () => {
   const {data, id} = useLoaderData();
-  const singleDrink = data.drinks[0];
+  
+  if(!data.drinks) return <Navigate to="/" />
+  // if(!data) return <h2>Something wen wrong with this item.</h2>
+
+  const singleDrink = data?.drinks[0];
   const { strDrink: name, strDrinkThumb: image, strAlcoholic: info, strCategory: category, strGlass: glass , strInstructions: instructions } = singleDrink;
   var validIngredients = [];
   for(const [key, value] of Object.entries(singleDrink)) {
@@ -68,8 +72,6 @@ export const Cocktail = () => {
       validIngredients.push(value);
     }
   }
-  console.log(validIngredients)
-
 
   return (
     <Wrapper>
