@@ -61,9 +61,15 @@ export const loader = async (pageData) => {
 export const Cocktail = () => {
   const {data, id} = useLoaderData();
   const singleDrink = data.drinks[0];
-  console.log(singleDrink);
-
   const { strDrink: name, strDrinkThumb: image, strAlcoholic: info, strCategory: category, strGlass: glass , strInstructions: instructions } = singleDrink;
+  var validIngredients = [];
+  for(const [key, value] of Object.entries(singleDrink)) {
+    if(key.includes("strIngredient") && value) {
+      validIngredients.push(value);
+    }
+  }
+  console.log(validIngredients)
+
 
   return (
     <Wrapper>
@@ -81,6 +87,16 @@ export const Cocktail = () => {
           <p>
             <span className="drink-data">Category:</span>
             {category}
+          </p>
+          <p>
+            <span className="drink-data">Ingredients:</span>
+            {validIngredients.map((item, index)=>{
+              if(index !== validIngredients.length - 1) {
+                return `${item}, `
+              }
+
+              return `${item}.`
+            })}
           </p>
           <p>
             <span className="drink-data">Info:</span>
