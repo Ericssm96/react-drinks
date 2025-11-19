@@ -15,7 +15,7 @@ export const CocktailList = ( {drinks} ) => {
     <Wrapper>
       {formattedDrinks.map((drink)=>{
         return (
-          <CocktailCard key={drink.id} {...drinks} />
+          <CocktailCard key={drink.id} {...drink} />
         )
       })}
     </Wrapper>
