@@ -10,8 +10,10 @@ export const action = async ({request}) => {
   const response = await axios.post(newsletterUrl, data);
 
   console.log(response);
+  toast.success(response.data.msg);
 
-  return null;
+
+  return redirect("/");
 }
 
 export const Newsletter = () => {
