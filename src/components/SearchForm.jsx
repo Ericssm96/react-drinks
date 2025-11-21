@@ -17,14 +17,14 @@ const Wrapper = styled.div`
   }
 `;
 
-export const SearchForm = () => {
+export const SearchForm = ({searchTerm}) => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
   return (
     <Wrapper>
       <Form className='form'>
-        <input type='search' className='form-input' name="search" defaultValue="vodka" />
+        <input type='search' className='form-input' name="search" defaultValue={searchTerm} />
         <button type="submit" className='btn' disabled={isSubmitting}>{isSubmitting ? "searching" : "search"}</button>
       </Form>
     </Wrapper>
