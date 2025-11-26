@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevTools } from "@tanstack/react-query-devtools";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { HomeLayout, Landing, Cocktail, About, Newsletter, Error, SinglePageError } from "./pages";
 import { loader as landingLoader } from "./pages/Landing";
 import { loader as singleCocktailLoader } from "./pages/Cocktail";
@@ -48,9 +48,9 @@ const router = createBrowserRouter([
 
 const App = () => {
   return (
-    <QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
-      <ReactQueryDevTools initialIsOpen={false} />
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   )
 };
