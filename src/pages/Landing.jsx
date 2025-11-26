@@ -18,12 +18,15 @@ const searchCocktailsQuery = (searchTerm) => {
 }
 
 
-export const loader = async ({request}) => {
-  const url = new URL(request.url);
+export const loader = (queryClient) => {
+  return async ({request}) => {
+    const url = new URL(request.url);
 
-  const searchTerm = url.searchParams.get("search") || "red";
-  return {searchTerm};
-}
+    const searchTerm = url.searchParams.get("search") || "red";
+    await queryClient.ensureQueryData(searchCocktailsQuery(searchTerm));
+    return {searchTerm};
+  }
+} 
 
 export const Landing = () => {
   const {searchTerm} = useLoaderData();
